@@ -1,0 +1,85 @@
+{
+    "swagger": "2.0",
+    "info": {
+      "version": "1.0.0",
+      "title": "NodeJS Simple API SWAGGER",
+      "description": "Swagger for NodeJS Backend Auth App. \n ## Note : Put ur \"x-api-key\" on Authorize modal\n"
+    },
+    "host": "localhost:3333",
+    "schemes": [
+      "http"
+    ],
+    "securityDefinitions": {
+      "APIKeyHeader": {
+        "type": "apiKey",
+        "name": "x-api-key",
+        "in": "header"
+      }
+    },
+    "security": [
+      {
+        "APIKeyHeader": []
+      }
+    ],
+    "tags": [
+      {
+        "name": "user"
+      }
+    ],
+    "paths": {
+      "/api/v1/user": {
+        "get": {
+          "summary": "GET USER",
+          "tags": [
+            "user"
+          ],
+          "consumes": [
+            "application/json"
+          ],
+          "responses": {
+            "200": {
+              "description": "Will send Users Data"
+            },
+            "401": {
+              "description": "Unauthorized"
+            }
+          }
+        },
+        "post": {
+          "summary": "POST USER",
+          "tags": [
+            "user"
+          ],
+          "consumes": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "in": "body",
+              "name": "body",
+              "description": "The name of the user.",
+              "schema": {
+                "type": "object",
+                "required": [
+                  "name"
+                ],
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Will send `Token`"
+            },
+            "400": {
+              "description": "Bad Request"
+            }
+          }
+        }
+      }
+    }
+  }
