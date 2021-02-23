@@ -10,7 +10,8 @@ function getRouteHandler(req, res) {
 
 
 
-  mysqlconn.query('SELECT * FROM USERS', function (error, results, fields) {
+  mysqlconn.query('SELECT * FROM users', function (error, results, fields) {
+    if (error) return res.status(500).json({ message: 'Error' })
     var mysqlRes = results.map((mysqlObj, index) => {
       return Object.assign({}, mysqlObj);
     })
